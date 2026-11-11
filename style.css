@@ -1,11 +1,15 @@
-/* Colour palette */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap');
+
+/* Colour palette: warm café neutrals */
 :root {
-  --pink: #f8c8dc;
-  --lavender: #e6dcf5;
-  --mint: #d4f0e4;
-  --cream: #fffaf5;
-  --text: #4a4458;
-  --accent: #b784c9;
+  --cream: #f8f3ea;
+  --latte: #efe4d3;
+  --card: #fffdf8;
+  --line: #ddcfbb;
+  --espresso: #4a3b30;
+  --caramel: #9c6b4e;
+  --sage: #a9b79a;
+  --rose: #d9b8aa;
 }
 
 /* Element selectors */
@@ -13,40 +17,52 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
+  font-weight: 300;
   background-color: var(--cream);
-  color: var(--text);
-  line-height: 1.7;
+  color: var(--espresso);
+  line-height: 1.8;
 }
 
 h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
-  margin: 0 0 10px;
+  margin: 0 0 8px;
 }
 
 a {
-  color: var(--accent);
+  color: var(--caramel);
   text-decoration: none;
-  font-weight: 600;
 }
 
-/* ID selector */
+/* ID selector: header */
 #top-header {
-  background: linear-gradient(135deg, var(--pink), var(--lavender));
   text-align: center;
-  padding: 40px 20px 20px;
+  padding: 60px 20px 28px;
+  background-color: var(--latte);
+  border-bottom: 1px solid var(--line);
 }
 
 #top-header h1 {
-  font-size: 2rem;
-  color: var(--text);
+  font-size: 3.2rem;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--espresso);
 }
 
 .tagline {
-  margin: 0 0 20px;
-  font-weight: 300;
+  margin: 0 0 26px;
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--caramel);
 }
 
 /* Navigation bar with flexbox */
@@ -54,7 +70,7 @@ nav ul {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 28px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -62,68 +78,139 @@ nav ul {
 
 nav a {
   display: block;
-  padding: 8px 16px;
-  background-color: white;
-  color: var(--text);
-  border-radius: 20px;
+  padding: 4px 0;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--espresso);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, color 0.3s;
 }
 
 nav a:hover {
-  background-color: var(--accent);
-  color: white;
+  color: var(--caramel);
+  border-bottom-color: var(--caramel);
 }
 
 /* Sections */
 main {
-  max-width: 900px;
+  max-width: 880px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px 24px;
 }
 
 section {
-  margin: 30px 0;
+  margin: 56px 0;
+  animation: fadeIn 1s ease both;
 }
 
 section h2 {
   text-align: center;
-  color: var(--accent);
-  border-bottom: 3px solid var(--lavender);
-  padding-bottom: 8px;
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: var(--espresso);
+}
+
+/* Small ornament under headings */
+section h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 1px;
+  margin: 10px auto 26px;
+  background-color: var(--caramel);
 }
 
 #about p, #contact p {
   text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
 }
 
 /* Class selectors: cards */
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
   justify-content: center;
 }
 
 .card {
-  background-color: var(--mint);
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  background-color: var(--card);
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(74, 59, 48, 0.06);
   flex: 1 1 200px;
-  margin-bottom: 10px;
+  transition: transform 0.35s, box-shadow 0.35s;
 }
 
-.card:nth-child(even) {
-  background-color: var(--pink);
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(74, 59, 48, 0.12);
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--rose);
+}
+
+.card p {
+  margin: 0 0 6px;
+  font-size: 0.92rem;
+}
+
+/* Soft accent on skill cards */
+.card-container .card:nth-child(odd) {
+  border-top: 3px solid var(--sage);
+}
+
+.card-container .card:nth-child(even) {
+  border-top: 3px solid var(--rose);
 }
 
 .muted {
-  font-weight: 300;
   font-style: italic;
+  color: var(--caramel);
+}
+
+/* Email link as an outlined button */
+#contact a {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 10px 28px;
+  border: 1px solid var(--caramel);
+  border-radius: 30px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#contact a:hover {
+  background-color: var(--caramel);
+  color: var(--card);
 }
 
 footer {
-  background-color: var(--lavender);
   text-align: center;
-  padding: 15px;
-  font-size: 0.9rem;
+  padding: 22px;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--caramel);
+  background-color: var(--latte);
+  border-top: 1px solid var(--line);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+  #top-header h1 { font-size: 2.4rem; }
+  nav ul { gap: 18px; }
 }
